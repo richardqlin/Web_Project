@@ -15,7 +15,8 @@ def initialize_database():
 
 @app.route('/')
 def index():
-	return render_template('index.html', title = 'New Title')
+	entries = requests.get('https://murmuring-bastion-31969.herokuapp.com/entries').json()
+	return render_template('index.html', entries = entries)
 
 @app.route('/add')
 def add_entry():
