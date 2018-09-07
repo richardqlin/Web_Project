@@ -5,6 +5,8 @@ from database import Database
 
 from routes.api import api 
 
+import requests
+
 app=Flask(__name__)
 
 app.register_blueprint(api)
