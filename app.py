@@ -15,7 +15,7 @@ def initialize_database():
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('index.html', title = 'New Title')
 
 @app.route('/add')
 def add_entry():
