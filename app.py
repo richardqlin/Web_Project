@@ -23,18 +23,22 @@ def index():
 @app.route('/add',methods=['GET','POST'])
 def add_entry():
 	if request.method=='POST':
+
 		data={
 		'title':request.form['title'],
 		'post':request.fomr['post']
 		}
+		Database.insert_record(data)
 		requests.post('https://murmuring-bastion-31969.herokuapp.com/post',data=data)
+		
 		return redirect(url_for('index'))
-	return render_template('add_entry.html')
+	else:
+		return render_template('add_entry.html')
 
 	
 @app.route('/clear')
 def delete_entries():
-	requests.delete('https://murmuring-bastion-31969.herokuapp.com/entries')
+	requests.delete('https://murmuring-bastion-31969.herokuapp.com/delete')
 	return redirect(url_for('index'))
 
 
