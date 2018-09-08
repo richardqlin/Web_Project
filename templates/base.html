@@ -15,8 +15,10 @@ crossorigin="anonymous"></head>
 
 <a class="nav-link" href="{{ url_for('index') }}">HOME</a>
 
-
 <a class="nav-link" href="{{ url_for('add_entry') }}">ADD</a>
+
+
+<a class="nav-link" href="{{ url_for('delete_entries') }}">Delete</a>
 
 <a class="nav-link" href="#content">Content</a>
 
@@ -26,7 +28,7 @@ crossorigin="anonymous"></head>
 	{% block content %} {% endblock %}
 
 </div>
-	<h1>{{ title }}</h1>
+	
 
 </body>
 </html>

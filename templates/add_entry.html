@@ -5,7 +5,7 @@
 {% block content %}
 
 	<div class="entry">
-<form>
+<form action="{{ url_for('add_entry') }}" method="post">
 	<div class="form-group">
 		<label for ="title" class="form-control">Title</label>
 		<input id="title" class="form-control">

@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template,redirect,url_for,request
 
 from database import Database
 
@@ -20,9 +20,23 @@ def index():
 	entries = requests.get('https://murmuring-bastion-31969.herokuapp.com/entries').json()
 	return render_template('index.html', entries = entries)
 
-@app.route('/add')
+@app.route('/add',methods=['GET','POST'])
 def add_entry():
+	if request.method=='POST':
+		data={
+		'title':request.form['title'],
+		'post':request.fomr['post']
+		}
+		requests.post('https://murmuring-bastion-31969.herokuapp.com/post',data=data)
+		return redirect(url_for('index'))
 	return render_template('add_entry.html')
+
+	
+@app.route('/clear')
+def delete_entries():
+	requests.delete('https://murmuring-bastion-31969.herokuapp.com/entries')
+	return redirect(url_for('index'))
+
 
 if __name__=="__main__":
 	app.run(debug=True)
