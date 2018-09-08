@@ -26,7 +26,7 @@ def add_entry():
 
 		data={
 		'title':request.form['title'],
-		'post':request.fomr['post']
+		'post':request.form['post']
 		}
 		Database.insert_record(data)
 		requests.post('https://murmuring-bastion-31969.herokuapp.com/post',data=data)
