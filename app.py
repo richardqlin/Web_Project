@@ -22,6 +22,7 @@ def index():
 
 @app.route('/add',methods=['GET','POST'])
 def add_entry():
+
 	if request.method=='POST':
 
 		data={
@@ -30,13 +31,12 @@ def add_entry():
 		}
 		Database.insert_record(data)
 		requests.post('https://murmuring-bastion-31969.herokuapp.com/post',data=data)
-		
 		return redirect(url_for('index'))
-	else:
-		return render_template('add_entry.html')
+	
+	return render_template('add_entry.html')
 
 	
-@app.route('/clear')
+@app.route('/clear',methods=['DELETE'])
 def delete_entries():
 	requests.delete('https://murmuring-bastion-31969.herokuapp.com/delete')
 	return redirect(url_for('index'))
