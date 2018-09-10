@@ -38,6 +38,7 @@ def add_entry():
 	
 @app.route('/clear',methods=['DELETE'])
 def delete_entries():
+	Database.delete_all_records()
 	requests.delete('https://murmuring-bastion-31969.herokuapp.com/delete')
 	return redirect(url_for('index'))
 
