@@ -29,7 +29,7 @@ def add_entry():
 		'title':request.form['title'],
 		'post':request.form['post']
 		}
-		Database.insert_record(data)
+		#Database.insert_record(data)
 		requests.post('https://murmuring-bastion-31969.herokuapp.com/post',data=data)
 		return redirect(url_for('index'))
 	

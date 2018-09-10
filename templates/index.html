@@ -8,9 +8,9 @@
 <div class ="entry">
 {% for entry in entries %}
 	
-<h1>{{ entry }}</h1>
+<h1>Title: {{ entry.title }}</h1>
 
-<p>This my first page.</p>
+<p>Post: {{ entry.post}}</p>
 
 {% else %}
 <p>no data</p>
