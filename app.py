@@ -17,7 +17,7 @@ def initialize_database():
 
 @app.route('/')
 def index():
-	entries = requests.get('https://murmuring-bastion-31969.herokuapp.com/entries').json()
+	entries = requests.get('https://protected-spire-82809.herokuapp.com/entries').json()
 	return render_template('index.html', entries = entries)
 
 @app.route('/add',methods=['GET','POST'])
@@ -30,7 +30,7 @@ def add_entry():
 		'post':request.form['post']
 		}
 		#Database.insert_record(data)
-		requests.post('https://murmuring-bastion-31969.herokuapp.com/post',data=data)
+		requests.post('https://protected-spire-82809.herokuapp.com/post',data=data)
 		return redirect(url_for('index'))
 	
 	return render_template('add_entry.html')
@@ -39,9 +39,9 @@ def add_entry():
 @app.route('/clear')
 def delete_entries():
 	#Database.delete_all_records()
-	requests.delete('https://murmuring-bastion-31969.herokuapp.com/delete')
+	requests.delete('https://protected-spire-82809.herokuapp.com/delete')
 	return redirect(url_for('index'))
 
 
 if __name__=="__main__":
-	app.run(debug=True)
+	app.run(host='https://protected-spire-82809.herokuapp.com/',debug=True)
